@@ -108,6 +108,7 @@ public class AMQPRPCClient extends AMQPSampler implements Interruptible {
         String response = new String(delivery.getBody());
         result.setSamplerData(response);
         result.setResponseMessage(response);
+        result.setResponseData(response, null);
 
         // commit the sample.
         if (getUseTx()) {
@@ -115,7 +116,6 @@ public class AMQPRPCClient extends AMQPSampler implements Interruptible {
         }
       }
 
-      result.setResponseData("OK", null);
       result.setDataType(SampleResult.TEXT);
 
       result.setResponseCodeOK();
